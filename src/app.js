@@ -2,11 +2,9 @@
 
 import bodyparser from 'body-parser'
 import cors from 'cors'
-import dotenv from 'dotenv'
 import express from 'express'
 import fileUpload from 'express-fileupload'
 import helmet from 'helmet'
-import morgan from 'morgan'
 import passport from 'passport'
 import xss from 'xss-clean'
 import { errorhandle, setCorrelationId } from './middlewares/appMid'
@@ -16,10 +14,6 @@ import authRouter from './router/user'
 
 const app = express()
 
-if (process.env.NODE_ENV !== 'production') {
-    dotenv.config({ path: './config/config.env' })
-    app.use(morgan('dev'))
-}
 
 
 app.use(fileUpload())
